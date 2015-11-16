@@ -12,9 +12,11 @@ import (
 	"github.com/leonzhouwei/llsn/go/conf"
 )
 
+var config conf.Config
+
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == common.GET {
-		err := tplutil.RenderHtml(w, "index")
+		err := tplutil.RenderHtml(w, config, "index")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
@@ -24,10 +26,14 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	addr := ":" + strconv.Itoa(conf.Port())
+	config = conf.NewConfig()
+
+	addr := ":" + strconv.Itoa(config.Port())
 	fmt.Println(addr)
 
-	http.HandleFunc("/", httputil.SafeHandler(indexHandler))
-	log.Fatal(http.ListenAndServe(addr, nil))
+	mux := http.NewServeMux()
+	httputil.StaticDirHandler(mux, "/public/", "./public")
+	mux.HandleFunc("/", httputil.SafeHandler(indexHandler))
+	log.Fatal(http.ListenAndServe(addr, mux))
 
 }

@@ -8,9 +8,9 @@ import (
 	"github.com/leonzhouwei/llsn/go/conf"
 )
 
-func RenderHtml(w http.ResponseWriter, fileNameNoSuffix string) error {
-	baseName := fileNameNoSuffix + conf.ViewFileSuffix()
-	filePath := filepath.Join(conf.PublicDirHome(), baseName)
+func RenderHtml(w http.ResponseWriter, config conf.Config, fileNameNoSuffix string) error {
+	baseName := fileNameNoSuffix + config.ViewFileSuffix()
+	filePath := filepath.Join(config.PublicDirHome(), baseName)
 	t, err := template.ParseFiles(filePath)
 	if err != nil {
 		return err

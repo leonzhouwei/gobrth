@@ -1,17 +1,30 @@
 package conf
 
-var port int = 1209
-var publicDirHome string = "templates"
-var viewFileSuffix string = ".html"
-
-func Port() int {
-	return port
+type Config interface {
+	Port() int
+	PublicDirHome() string
+	ViewFileSuffix() string
 }
 
-func PublicDirHome() string {
-	return publicDirHome
+type defaultConfig struct {
+	port int
+	publicDirHome string
+	viewFileSuffix string
 }
 
-func ViewFileSuffix() string {
-	return viewFileSuffix
+func NewConfig() Config {
+	ret := defaultConfig{port: 1209, publicDirHome: "templates", viewFileSuffix: ".html"}
+	return ret
+}
+
+func (c defaultConfig) Port() int {
+	return c.port
+}
+
+func (c defaultConfig) PublicDirHome() string {
+	return c.publicDirHome
+}
+
+func (c defaultConfig) ViewFileSuffix() string {
+	return c.viewFileSuffix
 }
