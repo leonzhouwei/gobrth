@@ -2,18 +2,18 @@ package conf
 
 type Config interface {
 	Port() int
-	PublicDirHome() string
+	ViewFileHome() string
 	ViewFileSuffix() string
 }
 
 type defaultConfig struct {
 	port int
-	publicDirHome string
+	viewFileHome string
 	viewFileSuffix string
 }
 
 func NewConfig() Config {
-	ret := defaultConfig{port: 1209, publicDirHome: "templates", viewFileSuffix: ".html"}
+	ret := defaultConfig{port: 1209, viewFileHome: "templates", viewFileSuffix: ".html"}
 	return ret
 }
 
@@ -21,8 +21,8 @@ func (c defaultConfig) Port() int {
 	return c.port
 }
 
-func (c defaultConfig) PublicDirHome() string {
-	return c.publicDirHome
+func (c defaultConfig) ViewFileHome() string {
+	return c.viewFileHome
 }
 
 func (c defaultConfig) ViewFileSuffix() string {
