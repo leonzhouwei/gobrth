@@ -33,11 +33,11 @@ func SafeHandler(fn http.HandlerFunc) http.HandlerFunc {
 
 func StaticDirHandler(mux *http.ServeMux, prefix string, staticDir string) {
 	mux.HandleFunc(prefix, func(w http.ResponseWriter, r *http.Request) {
-		file := staticDir + r.URL.Path[len(prefix)-1:]
-		if exists := common.FileExist(file); !exists {
+		filePath := staticDir + r.URL.Path[len(prefix)-1:]
+		if exists := common.FileExist(filePath); !exists {
 			http.NotFound(w, r)
 			return
 		}
-		http.ServeFile(w, r, file)
+		http.ServeFile(w, r, filePath)
 	})
 }
