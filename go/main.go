@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/leonzhouwei/llsn/go/common"
-	"github.com/leonzhouwei/llsn/go/common/httputil"
-	"github.com/leonzhouwei/llsn/go/common/tplutil"
-	"github.com/leonzhouwei/llsn/go/conf"
+	"github.com/leonzhouwei/gobrth/go/common"
+	"github.com/leonzhouwei/gobrth/go/common/httputil"
+	"github.com/leonzhouwei/gobrth/go/common/tplutil"
+	"github.com/leonzhouwei/gobrth/go/conf"
 )
 
 var config conf.Config

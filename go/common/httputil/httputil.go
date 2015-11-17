@@ -5,7 +5,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/leonzhouwei/llsn/go/common"
+	"github.com/leonzhouwei/gobrth/go/common"
 )
 
 func SafeHandler(fn http.HandlerFunc) http.HandlerFunc {

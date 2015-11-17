@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/leonzhouwei/llsn/go/conf"
+	"github.com/leonzhouwei/gobrth/go/conf"
 )
 
 func RenderHtml(w http.ResponseWriter, config conf.Config, fileNameNoSuffix string) error {
