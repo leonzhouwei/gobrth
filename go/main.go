@@ -16,7 +16,7 @@ var config conf.Config
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == common.GET {
-		err := tplutil.RenderHtml(w, config.ViewFileHome(), "index", config.ViewFileSuffix())
+		err := tplutil.RenderHtml(w, config, "index")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
