@@ -34,5 +34,4 @@ func main() {
 	httputil.StaticDirHandler(mux, "/public/", "./public")
 	mux.HandleFunc("/", httputil.SafeHandler(indexHandler))
 	log.Fatal(http.ListenAndServe(addr, mux))
-
 }
