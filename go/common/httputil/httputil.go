@@ -22,9 +22,9 @@ func SafeHandler(fn http.HandlerFunc) http.HandlerFunc {
 				// w.WriteHeader(http.StatusInternalServerError)
 				// renderHtml(w, "error", e)
 				// logging
-				log.Println("WARN: panic in %v - %v", fn, err)
+				log.Printf("WARN: panic in %v - %v\n", fn, err)
 			} else {
-				log.Println("WARN: panic in %v - %v", fn, r)
+				log.Printf("WARN: panic in %v - %v\n", fn, r)
 			}
 		}()
 		fn(w, r)
