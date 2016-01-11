@@ -7,8 +7,8 @@ type Config interface {
 }
 
 type defaultConfig struct {
-	port int
-	viewFileHome string
+	port           int
+	viewFileHome   string
 	viewFileSuffix string
 }
 
